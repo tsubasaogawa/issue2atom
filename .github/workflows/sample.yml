@@ -1,0 +1,19 @@
+on:
+  # schedule:
+  #  - cron: "15 0 * * *"
+  workflow_dispatch:
+
+jobs:
+  octocat_hello-world:
+    runs-on: ubuntu-latest
+    name: Sample job using octocat/hello-world
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: issue2atom
+        uses: ./
+        with:
+          user: "octocat"
+          repo: "hello-world"
+          max_issue_num: 10

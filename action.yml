@@ -1,0 +1,28 @@
+name: "issue2atom"
+description: "Generate Atom RSS from GitHub Issues"
+
+inputs:
+  user:
+    description: "GitHub User Name"
+    required: true
+    default: "tsubasaogawa"
+  repo:
+    description: "GitHub Repository Name"
+    required: true
+    default: "issue2atom"
+  max_issue_num:
+    description: "The number of fetching issues"
+    required: false
+    default: "10"
+
+outputs:
+  status_code:
+    description: "Status code from Github API"
+
+runs:
+  using: "docker"
+  image: "Dockerfile"
+  env:
+    USER: ${{ inputs.user }}
+    REPO: ${{ inputs.repo }}
+    MAX_ISSUE_NUM: ${{ inputs.max_issue_num }}
