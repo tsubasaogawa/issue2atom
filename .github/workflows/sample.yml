@@ -28,4 +28,3 @@ jobs:
           commit_message: Generate ${{ steps.issue2atom.outputs.atom_file_path }} (${{ steps.issue2atom.outputs.atom_file_size }} bytes)
           branch: gh-pages
           file_pattern: "**/atom.xml"
-          create_branch: true
