@@ -1,4 +1,4 @@
-# issue2atom
+# issue2atom action
 
 ## Overview
 
@@ -17,6 +17,35 @@ This script generates Atom feed from GitHub Issues.
 1. Browse https://<your_account>.github.io/<copied_repo_name>/<target_user>/<target_repo>/atom.xml
 
 NOTE: sample.yml overwrites (i.e. force pushes) `gh-pages` branch. 
+
+#### Inputs
+
+|key|description|required|default|
+|---|-----------|--------|-------|
+|user|Target GitHub user name|true|octocat|
+|repo|Target GitHub repository name|true|hello-world|
+|max_issue_num|The number of issues included in Atom|false|10|
+|per_page|The number of request issues|false|30|
+|allow_pr|Allow pull request or not|false|false|
+
+#### Outputs
+
+|key|description|
+|---|-----------|
+|status_code|Status code from Github API|
+|atom_file_path|ATOM file path|
+|atom_file_size|ATOM file size|
+
+#### Example
+
+```yaml
+# Generate atom feed in an instance by GitHub Actions
+uses: tsubasaogawa/issue2atom-action@v1
+with:
+    user: "octocat"
+    repo: "hello-world"
+    max_issue_num: 10
+```
 
 ### (b) Run on local machine
 
