@@ -22,6 +22,10 @@ jobs:
           repo: "hello-world"
           max_issue_num: 10
 
+      - name: Ls
+        run: |
+          ls -la
+
       - name: Push generated atom file
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
