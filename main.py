@@ -26,14 +26,14 @@ def is_allowed_issue(issue):
 
 def main():
     response = requests.get(REQUEST_URI, headers=REQUEST_HEADER)
-    issues = json.loads(response.text)
 
+    issues = json.loads(response.text)
     target_issues = sorted(
         list(filter(is_allowed_issue, issues)),
         key=lambda x: x['number'],
-        reverse=False
+        reverse=True
     )
- 
+
     feed_id = f'issue2atom_{USER}/{REPO}/issues'
 
     feed = FeedGenerator()
@@ -46,7 +46,7 @@ def main():
     feed.language('en')
 
     for issue in target_issues[0:MAX_ISSUE_NUM]:
-        entry = feed.add_entry()
+        entry = feed.add_entry(order='append')
         entry.id(f'{feed_id}/{issue["number"]}')
         entry.title(issue['title'])
         entry.link(href=issue['html_url'], rel='alternate')
