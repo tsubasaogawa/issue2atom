@@ -11,12 +11,21 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Set up Docker Buildx
+      - name: Set up docker buildx
         uses: docker/setup-buildx-action@v1
 
       - name: issue2atom
+        id: issue2atom
         uses: ./
         with:
           user: "octocat"
           repo: "hello-world"
           max_issue_num: 10
+
+      - name: Push generated atom file
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: Generate ${{ steps.issue2atom.outputs.atom_file_path }} (${{ steps.issue2atom.outputs.atom_file_size }} bytes)
+          branch: gh-pages
+          file_pattern: atom.xml
+          create_branch: true

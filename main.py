@@ -46,11 +46,14 @@ def main():
         entry.summary(issue['body'])
 
     save_dir = f'{USER}/{REPO}'
+    atom_file = f'{save_dir}/atom.xml'
 
     os.makedirs(save_dir, exist_ok=True)
-    feed.atom_file(f'{save_dir}/atom.xml')
+    feed.atom_file(atom_file)
 
     print(f"::set-output name=status_code::{response.status_code}")
+    print(f"::set-output name=atom_file_path::{atom_file}")
+    print(f"::set-output name=atom_file_size::{os.path.getsize(atom_file)}")
 
 
 if __name__ == '__main__':

@@ -18,6 +18,10 @@ inputs:
 outputs:
   status_code:
     description: "Status code from Github API"
+  atom_file_path:
+    description: "ATOM file path"
+  atom_file_size:
+    description: "ATOM file size"
 
 runs:
   using: "docker"
