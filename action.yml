@@ -38,3 +38,7 @@ runs:
     USER: ${{ inputs.user }}
     REPO: ${{ inputs.repo }}
     MAX_ISSUE_NUM: ${{ inputs.max_issue_num }}
+
+branding:
+  icon: "book"
+  color: "green"
