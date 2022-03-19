@@ -16,7 +16,7 @@ jobs:
 
       - name: issue2atom
         id: issue2atom
-        uses: ./
+        uses: tsubasaogawa/issue2atom@v1
         with:
           user: "octocat"
           repo: "hello-world"
