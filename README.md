@@ -4,6 +4,40 @@
 
 This script generates Atom feed from GitHub Issues.
 
+### Generated Atom feed sample
+
+Target issue is [octocat/hello-world](https://github.com/octocat/hello-world/issues)
+
+```xml
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+  <id>issue2atom_octocat/hello-world/issues</id>
+  <title>GitHub Issues octocat/hello-world</title>
+  <updated>2022-03-19T13:48:39.199841+00:00</updated>
+  <author>
+    <name>octocat</name>
+  </author>
+  <link href="https://github.com/octocat/hello-world/issues" rel="alternate"/>
+  <generator uri="https://lkiesow.github.io/python-feedgen" version="0.9.0">python-feedgen</generator>
+  <subtitle>GitHub Issues of octocat/hello-world</subtitle>
+  <entry>
+    <id>issue2atom_octocat/hello-world/issues/2205</id>
+    <title>title</title>
+    <updated>2022-03-11T12:58:34+00:00</updated>
+    <link href="https://github.com/octocat/Hello-World/issues/2205" rel="alternate"/>
+    <published>2022-03-11T12:58:34+00:00</published>
+  </entry>
+  <entry>
+    <id>issue2atom_octocat/hello-world/issues/2202</id>
+    <title>PROJETO CR7</title>
+    <updated>2022-03-07T02:36:59+00:00</updated>
+    <link href="https://github.com/octocat/Hello-World/issues/2202" rel="alternate"/>
+    <summary>CRIPITOMOEDA</summary>
+    <published>2022-03-07T02:36:59+00:00</published>
+  </entry>
+    :
+</feed>
+```
+
 ## Usage
 
 ### (a) Use GitHub Actions
