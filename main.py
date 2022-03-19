@@ -12,7 +12,13 @@ USER = os.environ['USER']
 REPO = os.environ['REPO']
 
 MAX_ISSUE_NUM = int(os.environ.get('MAX_ISSUE_NUM', '10'))
-REQUEST_URI = f'https://api.github.com/repos/{USER}/{REPO}/issues?per_page={MAX_ISSUE_NUM}'
+PER_PAGE = int(os.environ.get('PER_PAGE', '30'))
+REQUEST_URI = f'https://api.github.com/repos/{USER}/{REPO}/issues?per_page={PER_PAGE}'
+ALLOW_PR = os.environ.get('ALLOW_PR', 'False').lower() == 'True'
+
+
+def is_allowed_issue(issue):
+    ALLOW_PR or 'pull_request' not in issue
 
 
 def main():
@@ -32,11 +38,11 @@ def main():
     feed.language('en')
 
     target_issues = sorted(
-        issues[0:MAX_ISSUE_NUM],
+        list(filter(is_allowed_issue, issues)),
         key=lambda x: x['number'],
         reverse=False
     )
-    for issue in target_issues:
+    for issue in target_issues[0:MAX_ISSUE_NUM]:
         entry = feed.add_entry()
         entry.id(f'{feed_id}/{issue["number"]}')
         entry.title(issue['title'])

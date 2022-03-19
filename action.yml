@@ -3,17 +3,25 @@ description: "Generate Atom RSS from GitHub Issues"
 
 inputs:
   user:
-    description: "GitHub User Name"
+    description: "Target GitHub user name"
     required: true
-    default: "tsubasaogawa"
+    default: "octocat"
   repo:
-    description: "GitHub Repository Name"
+    description: "Target GitHub repository name"
     required: true
-    default: "issue2atom"
+    default: "hello-world"
   max_issue_num:
-    description: "The number of fetching issues"
+    description: "The number of issues included in Atom"
     required: false
     default: "10"
+  per_page:
+    description: "The number of request issues"
+    required: false
+    default: "30"
+  allow_pr:
+    description: "Allow pull request or not"
+    required: false
+    default: "False"
 
 outputs:
   status_code:
