@@ -5,6 +5,7 @@ idna==3.3
 importlib-metadata==4.11.3
 lxml==4.8.0
 Markdown==3.3.6
+py-gfm==1.0.2
 python-dateutil==2.8.2
 requests==2.27.1
 six==1.16.0
