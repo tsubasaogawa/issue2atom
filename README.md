@@ -56,8 +56,8 @@ NOTE: sample.yml overwrites (i.e. force pushes) `gh-pages` branch.
 |repo|Target GitHub repository name|true|hello-world|
 |max_issue_num|The number of issues included in Atom|false|10|
 |per_page|The number of request issues|false|30|
-|shorten_length|Length of &lt;summary&gt; section|100|
-|atom_base_url|Parent URL of atom file. ex) https://foo.github.io/issue2atom if atom URL of octocat/hello-world is https://foo.github.io/issue2atom/octocat/hello-world/atom.xml|''|
+|shorten_length|Length of &lt;summary&gt; section|false|100|
+|atom_base_url|Parent URL of atom file. ex) https://foo.github.io/issue2atom if atom URL of octocat/hello-world is https://foo.github.io/issue2atom/octocat/hello-world/atom.xml|false|''|
 |allow_pr|Allow pull request or not|false|false|
 
 #### Outputs
