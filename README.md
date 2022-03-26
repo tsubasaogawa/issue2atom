@@ -10,30 +10,24 @@ Target issue is [octocat/hello-world](https://github.com/octocat/hello-world/iss
 
 ```xml
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
-  <id>issue2atom_octocat/hello-world/issues</id>
-  <title>GitHub Issues octocat/hello-world</title>
-  <updated>2022-03-19T13:48:39.199841+00:00</updated>
-  <author>
-    <name>octocat</name>
-  </author>
-  <link href="https://github.com/octocat/hello-world/issues" rel="alternate"/>
-  <generator uri="https://lkiesow.github.io/python-feedgen" version="0.9.0">python-feedgen</generator>
-  <subtitle>GitHub Issues of octocat/hello-world</subtitle>
-  <entry>
-    <id>issue2atom_octocat/hello-world/issues/2205</id>
-    <title>title</title>
-    <updated>2022-03-11T12:58:34+00:00</updated>
-    <link href="https://github.com/octocat/Hello-World/issues/2205" rel="alternate"/>
-    <published>2022-03-11T12:58:34+00:00</published>
-  </entry>
-  <entry>
-    <id>issue2atom_octocat/hello-world/issues/2202</id>
-    <title>PROJETO CR7</title>
-    <updated>2022-03-07T02:36:59+00:00</updated>
-    <link href="https://github.com/octocat/Hello-World/issues/2202" rel="alternate"/>
-    <summary>CRIPITOMOEDA</summary>
-    <published>2022-03-07T02:36:59+00:00</published>
-  </entry>
+    <id>tag:issue2atom,2006-01-02:/octocat/hello-world/issues</id>
+    <title>octocat/hello-world - GitHub Issues</title>
+    <updated>2022-03-26T15:02:35.517122+00:00</updated>
+    <author>
+        <name>octocat</name>
+    </author>
+    <link href="https://github.com/octocat/hello-world/issues" rel="alternate" />
+    <generator uri="https://lkiesow.github.io/python-feedgen" version="0.9.0">python-feedgen</generator>
+    <subtitle>GitHub Issues of octocat/hello-world</subtitle>
+    <entry>
+        <id>tag:issue2atom,2006-01-02:/octocat/hello-world/issues/2237</id>
+        <title>Check This out</title>
+        <updated>2022-03-25T05:46:38+00:00</updated>
+        <content type="html">&lt;p&gt;This is a test body&lt;/p&gt;</content>
+        <link href="https://github.com/octocat/Hello-World/issues/2237" rel="alternate" />
+        <summary>This is a test body...</summary>
+        <published>2022-03-25T05:45:05+00:00</published>
+    </entry>
     :
 </feed>
 ```
@@ -41,6 +35,8 @@ Target issue is [octocat/hello-world](https://github.com/octocat/hello-world/iss
 ## Usage
 
 ### (a) Use GitHub Actions
+
+See also [sample.yml](https://github.com/tsubasaogawa/issue2atom/.github/workflows/sample.yml)
 
 1. Copy this repository to your account using template.
 1. Fix issue2atom/.github/workflows/sample.yml
@@ -60,6 +56,8 @@ NOTE: sample.yml overwrites (i.e. force pushes) `gh-pages` branch.
 |repo|Target GitHub repository name|true|hello-world|
 |max_issue_num|The number of issues included in Atom|false|10|
 |per_page|The number of request issues|false|30|
+|shorten_length|Length of &lt;summary&gt; section|100|
+|atom_base_url|Parent URL of atom file. ex) https://foo.github.io/issue2atom if atom URL of octocat/hello-world is https://foo.github.io/issue2atom/octocat/hello-world/atom.xml|''|
 |allow_pr|Allow pull request or not|false|false|
 
 #### Outputs

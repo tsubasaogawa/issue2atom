@@ -53,8 +53,13 @@ def add_entry(feed: FeedGenerator, issue: dict):
     entry.link(href=issue['html_url'], rel='alternate')
     entry.published(issue['created_at'])
     entry.updated(issue['updated_at'])
-    summarized_body = ''.join(issue['body'].splitlines())[:SHORTEN_LENGTH] + '...'
-    body_html = markdown.markdown(issue['body'], extensions=[GithubFlavoredMarkdownExtension()])
+
+    body = issue['body'] or ''
+    summarized_body = ''.join(body.splitlines())[:SHORTEN_LENGTH] + '...'
+    body_html = markdown.markdown(
+        body, extensions=[GithubFlavoredMarkdownExtension()]
+    )
+
     entry.summary(summarized_body)
     entry.content(content=''.join(body_html.splitlines()), type='html')
 

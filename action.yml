@@ -18,6 +18,14 @@ inputs:
     description: "The number of request issues"
     required: false
     default: "30"
+  shorten_length:
+    description: "Length of &lt;summary&gt; section"
+    required: false
+    default: "100"
+  atom_base_url:
+    description: "Parent URL of atom file. ex) https://foo.github.io/issue2atom if atom URL of octocat/hello-world is https://foo.github.io/issue2atom/octocat/hello-world/atom.xml"
+    required: false
+    default: ""
   allow_pr:
     description: "Allow pull request or not"
     required: false
