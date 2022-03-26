@@ -36,7 +36,7 @@ Target issue is [octocat/hello-world](https://github.com/octocat/hello-world/iss
 
 ### (a) Use GitHub Actions
 
-See also [sample.yml](https://github.com/tsubasaogawa/issue2atom/.github/workflows/sample.yml)
+See also [sample.yml](https://github.com/tsubasaogawa/issue2atom/blob/main/.github/workflows/sample.yml)
 
 1. Copy this repository to your account using template.
 1. Fix issue2atom/.github/workflows/sample.yml
@@ -72,7 +72,7 @@ NOTE: sample.yml overwrites (i.e. force pushes) `gh-pages` branch.
 
 ```yaml
 # Generate atom feed in an instance by GitHub Actions
-uses: tsubasaogawa/issue2atom-action@v1
+uses: tsubasaogawa/issue2atom-action@v3
 with:
     user: "octocat"
     repo: "hello-world"
