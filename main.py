@@ -1,5 +1,7 @@
 from feedgen.feed import FeedGenerator
+import html
 import json
+import markdown
 import os
 import requests
 
@@ -13,6 +15,7 @@ REPO = os.environ['REPO']
 
 MAX_ISSUE_NUM = int(os.environ.get('MAX_ISSUE_NUM', '10'))
 PER_PAGE = int(os.environ.get('PER_PAGE', '30'))
+SHORTEN_LENGTH = 100
 REQUEST_URI = f'https://api.github.com/repos/{USER}/{REPO}/issues?per_page={PER_PAGE}'
 ALLOW_PR = os.environ.get('ALLOW_PR', 'false').lower() == 'true'
 
@@ -52,7 +55,10 @@ def main():
         entry.link(href=issue['html_url'], rel='alternate')
         entry.published(issue['created_at'])
         entry.updated(issue['updated_at'])
-        entry.summary(issue['body'])
+        summarized_body = ''.join(issue['body'].splitlines())[:SHORTEN_LENGTH] + '...'
+        body_html = html.escape(markdown.markdown(issue['body']))
+        entry.summary(summarized_body)
+        entry.content(content=body_html, type='html')
 
     save_dir = f'{USER}/{REPO}'
     atom_file = f'{save_dir}/atom.xml'
