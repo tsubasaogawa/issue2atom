@@ -2,9 +2,9 @@
 
 ## Overview
 
-This script generates Atom feed from GitHub Issues.
+This script generates ATOM feed from GitHub Issues.
 
-### Generated Atom feed sample
+### Generated ATOM feed sample
 
 Target issue is [octocat/hello-world](https://github.com/octocat/hello-world/issues)
 
@@ -38,12 +38,12 @@ Target issue is [octocat/hello-world](https://github.com/octocat/hello-world/iss
 
 See also [sample.yml](https://github.com/tsubasaogawa/issue2atom/blob/main/.github/workflows/sample.yml)
 
-1. Copy this repository to your account using template.
-1. Fix issue2atom/.github/workflows/sample.yml
-  - `on.schedule[0].cron`
-  - `jobs.<job_name>.steps[2].with`
-1. Run this workflow manually
-1. Publish GitHub Pages with `gh-pages` branch
+1. Copy this repository to your GitHub account using [template](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-repository-from-a-template).
+1. Fix .github/workflows/sample.yml
+    - Cron schedule
+    - Inputs of issue2atom action
+1. Run this GitHub Actions workflow manually
+1. Publish GitHub Pages using `gh-pages` branch
 1. Browse https://<your_account>.github.io/<copied_repo_name>/<target_user>/<target_repo>/atom.xml
 
 NOTE: sample.yml overwrites (i.e. force pushes) `gh-pages` branch. 
@@ -54,10 +54,10 @@ NOTE: sample.yml overwrites (i.e. force pushes) `gh-pages` branch.
 |---|-----------|--------|-------|
 |user|Target GitHub user name|true|octocat|
 |repo|Target GitHub repository name|true|hello-world|
-|max_issue_num|The number of issues included in Atom|false|10|
+|max_issue_num|The number of issues included in ATOM|false|10|
 |per_page|The number of request issues|false|30|
 |shorten_length|Length of &lt;summary&gt; section|false|100|
-|atom_base_url|Parent URL of atom file. ex) https://foo.github.io/issue2atom if atom URL of octocat/hello-world is https://foo.github.io/issue2atom/octocat/hello-world/atom.xml|false|''|
+|atom_base_url|Parent URL of ATOM file.<br>ex) https://foo.github.io/issue2atom when ATOM URL of octocat/hello-world is https://foo.github.io/issue2atom/octocat/hello-world/atom.xml|false|''|
 |allow_pr|Allow pull request or not|false|false|
 
 #### Outputs
@@ -71,7 +71,7 @@ NOTE: sample.yml overwrites (i.e. force pushes) `gh-pages` branch.
 #### Example
 
 ```yaml
-# Generate atom feed in an instance by GitHub Actions
+# Generate ATOM feed in an instance by GitHub Actions
 uses: tsubasaogawa/issue2atom-action@v3
 with:
     user: "octocat"
@@ -84,7 +84,7 @@ with:
 1. Set up new python virtual environment. The script requires Python 3.8.
 1. `pip install -r requirements.txt`
 1. `USER=<target_user> REPO=<target_repo> python ./main.py`
-1. main.py generates atom feed to `<target_user>/<target_repo>/atom.xml`
+1. main.py generates ATOM feed to `<target_user>/<target_repo>/atom.xml`
 
 ## Development
 
