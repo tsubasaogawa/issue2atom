@@ -81,10 +81,10 @@ with:
 
 ### (b) Run on local machine
 
-1. Set up new python virtual environment. The script requires Python 3.8.
-1. `pip install -r requirements.txt`
-1. `USER=<target_user> REPO=<target_repo> python ./main.py`
-1. main.py generates ATOM feed to `<target_user>/<target_repo>/atom.xml`
+```bash
+docker build -t tsubasaogawa/issue2atom:latest .
+docker run --rm -t -e USER=octocat -e REPO=hello-world -e STDOUT_ATOM=true tsubasaogawa/issue2atom:latest > atom.xml
+```
 
 ## Development
 
