@@ -22,6 +22,7 @@ ATOM_BASE_URL = os.environ.get('ATOM_BASE_URL', '')
 REQUEST_URI = f'https://api.github.com/repos/{USER}/{REPO}/issues?per_page={PER_PAGE}'
 FEED_ID = f'tag:issue2atom,2006-01-02:/{USER}/{REPO}/issues'
 ALLOW_PR = os.environ.get('ALLOW_PR', 'false').lower() == 'true'
+STDOUT_ATOM = os.environ.get('STDOUT_ATOM', 'false').lower() == 'true'
 
 
 def is_allowed_issue(issue: dict) -> bool:
@@ -66,7 +67,8 @@ def add_entry(feed: FeedGenerator, issue: dict):
 
 def get_issues() -> list:
     response = requests.get(REQUEST_URI, headers=REQUEST_HEADER)
-    print(f"::set-output name=status_code::{response.status_code}")
+    if not STDOUT_ATOM:
+        print(f"::set-output name=status_code::{response.status_code}")
 
     issues = json.loads(response.text)
 
@@ -82,6 +84,10 @@ def main():
 
     for issue in get_issues()[0:MAX_ISSUE_NUM]:
         add_entry(feed, issue)
+
+    if STDOUT_ATOM:
+        print(feed.atom_str().decode())
+        return
 
     save_dir = f'{USER}/{REPO}'
     atom_file = f'{save_dir}/atom.xml'
